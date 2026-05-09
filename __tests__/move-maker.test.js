@@ -1,5 +1,5 @@
 import { makeMove } from "../move-maker";
-descibe("makeMove", () => {
+describe("makeMove", () => {
   let board;
   beforeEach(() => {
     board = [

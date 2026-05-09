@@ -54,7 +54,7 @@ export function makeMove(board, move, player) {
   if (!validateMove(move, board)) {
     return false;
   }
-  const [row, col] = move.split(",").map(number);
+  const [row, col] = move.split(",").map(Number);
   board[row - 1][col - 1] = player;
   return true;
 }
