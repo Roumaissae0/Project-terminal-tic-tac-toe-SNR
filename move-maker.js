@@ -12,12 +12,31 @@
         let board = [
             ['X', '_', '_'],
             ['_', 'X', '_'],
-            ['O', 'O', 'X']
-        ];
+            ['O', 'O', 'X'] 
+        ]; 
 */
+// Implement this at the end if you have time, otherwise you can help your teammates!
 function validateMove(move, board) {
-    // Implement this at the end if you have time, otherwise you can help your teammates!
-    return true;
+  const parts = move.split(",");
+  if (parts.length !== 2) {
+    console.log("Try again...");
+    return false;
+  }
+  const row = Number(parts[0]);
+  const col = Number(parts[1]);
+
+  // Check row/col are 1, 2, or 3
+  if (![1, 2, 3].includes(row) || ![1, 2, 3].includes(col)) {
+    console.log("Try again...");
+    return false;
+  }
+
+  // Check if the space is free
+  if (board[row - 1][col - 1] !== "_") {
+    console.log("Try again...");
+    return false;
+  }
+  return true;
 }
 
 /*
@@ -32,5 +51,10 @@ function validateMove(move, board) {
             - Return true
 */
 export function makeMove(board, move, player) {
+  if (!validateMove(move, board)) {
     return false;
+  }
+  const [row, col] = move.split(",").map(Number);
+  board[row - 1][col - 1] = player;
+  return true;
 }
